@@ -34,7 +34,7 @@ const navLinks=<>
                   {navLinks}
                 </ul>
               </div>
-              <div className="bg-gradient-to-r from-blue-800 via-blue-500 to-blue-300 text-transparent bg-clip-text text-3xl font-bold  ">
+              <div className="bg-gradient-to-r from-blue-800 via-blue-500 to-blue-300 text-transparent bg-clip-text text-xl md:text-3xl font-bold  ">
   TaskGuard Pro
 </div>
             </div>

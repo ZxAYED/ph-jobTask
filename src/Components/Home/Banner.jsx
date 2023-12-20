@@ -39,12 +39,12 @@ const images = [
                alt={`Slide ${index}`}
                className="w-full h-full object-fit rounded-lg"
              />
-             <div className='absolute top-0 pl-20 pt-10 flex flex-col  left-0 h-full w-1/2 bg-gradient-to-r from-[#151515] to-rgba(21, 21, 21, 0.00)   p-6'>
-                <h1 className=' text-xl lg:text-5xl font-bold text-white py-2'>
+             <div className='absolute top-0 md:pl-20 md:pt-10 flex flex-col  left-0 h-full xl:w-1/2 bg-gradient-to-r from-[#151515] to-rgba(21, 21, 21, 0.00)   p-6'>
+                <h1 className=' text-xl  md:text-2xl  lg:text-5xl font-bold text-white py-2'>
                 Optimize Law Enforcement Operations with TaskGuard Pro
                 </h1>
-                <p className='text-white lg:text-lg pb-5 pt-5 '>Elevate your agency's efficiency and collaboration with TaskGuard Pro – a cutting-edge task management platform designed for law enforcement professionals. Streamline case management, enhance communication, and ensure seamless coordination within your team. Experience the power of precision and security as you safeguard your community with TaskGuard Pro.</p>
-                <div className='flex mt-6 justify-center   '>
+                <p className='text-white lg:text-lg py-2 md:pb-5 md:pt-5 '>Elevate your agency's efficiency and collaboration with TaskGuard Pro – a cutting-edge task management platform designed for law enforcement professionals. Streamline case management, enhance communication, and ensure seamless coordination within your team. Experience the power of precision and security as you safeguard your community with TaskGuard Pro.</p>
+                <div className='flex md:mt-6 mt-2 justify-center   '>
                 
                 <button className=" btn btn-outline text-white" >Let's Explore </button></div>
              </div>
