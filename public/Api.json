@@ -1,0 +1,38 @@
+[
+    {
+      "category": "Investigators",
+      "title": "Case Investigators",
+      "description": "Manage and oversee ongoing cases with features like task assignment, progress tracking, and collaboration tools.",
+      "benefits": "Improved case management, streamlined communication, and efficient collaboration among investigative teams.",
+      "image": "https://www.shutterstock.com/shutterstock/videos/1098986583/thumb/1.jpg?ip=x480"
+    },
+    {
+      "category": "PatrolOfficers",
+      "title": "Patrol Officers",
+      "description": "Utilize the platform for managing day-to-day tasks, reporting incidents, and staying updated on critical information.",
+      "benefits": "Enhanced patrol operations, quicker incident reporting, and better coordination with fellow officers.",
+      "image": "https://img.freepik.com/premium-photo/patrol-police-officer-street-beautiful-illustration-picture-generative-ai_146671-79090.jpg"
+    },
+    {
+      "category": "Administrators",
+      "title": "System Administrators",
+      "description": "Monitor task distribution, manage user roles, and generate reports for oversight and decision-making.",
+      "benefits": "Comprehensive oversight, efficient resource allocation, and data-driven decision-making for department administrators.",
+      "image": "https://e1.pxfuel.com/desktop-wallpaper/28/10/desktop-wallpaper-administrator.jpg"
+    },
+    {
+      "category": "Supervisors",
+      "title": "Supervisors",
+      "description": "Monitor the progress of cases, allocate resources, and ensure tasks are distributed effectively among team members.",
+      "benefits": "Improved team coordination, better resource management, and streamlined supervision of law enforcement operations.",
+      "image": "supervisors_image_url.jpg"
+    },
+    {
+      "category": "SpecializedUnits",
+      "title": "Specialized Units",
+      "description": "Tailored features for specialized units, improving coordination in critical operations and optimizing task management.",
+      "benefits": "Customized features for specialized units, improved coordination in critical operations, and optimized task management for specific unit requirements.",
+      "image": "specialized_units_image_url.jpg"
+    }
+  ]
+  
