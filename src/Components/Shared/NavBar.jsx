@@ -1,16 +1,23 @@
 import { Button } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Headroom from "react-headroom";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, Navigate, useNavigate } from "react-router-dom";
 import ButtonZ from "./ButtonZ";
+import { AuthContext } from "../Authentication/AuthProvider";
+import { ToastContainer, toast } from "react-toastify";
 
 
 const NavBar = () => {
-
+const {user,  logOut } =useContext(AuthContext)
+const navigate= useNavigate()
+const {photoURL,displayName} =user || ''
 const navLinks=<>
 <div className="flex flex-col   bg-[#001f3f] rounded-lg p-4  lg:flex-row gap-6">
 <NavLink to='/' className="hover:scale-110 hover:transition-transform hover:duration-400  font-semibold text-lg hover:text-[#CCCCCC] hover:bg-gradient-to-r hover:from-blue-800 hover:via-blue-500 hover:to-blue-300 hover:text-transparent hover:bg-clip-text  " > Home  </NavLink>
-<NavLink to='/' className=" hover:scale-110 hover:transition-transform hover:duration-400 font-semibold text-lg hover:text-[#CCCCCC] hover:bg-gradient-to-r hover:from-blue-800 hover:via-blue-500 hover:to-blue-300 hover:text-transparent hover:bg-clip-text " > DashBoard  </NavLink>
+{
+  user &&<NavLink to='/dashboard' className=" hover:scale-110 hover:transition-transform hover:duration-400 font-semibold text-lg hover:text-[#CCCCCC] hover:bg-gradient-to-r hover:from-blue-800 hover:via-blue-500 hover:to-blue-300 hover:text-transparent hover:bg-clip-text " > DashBoard  </NavLink>
+}
+
 <NavLink to='/' className="hover:scale-110 hover:transition-transform hover:duration-400  font-semibold text-lg hover:text-[#CCCCCC] hover:bg-gradient-to-r hover:from-blue-800 hover:via-blue-500 hover:to-blue-300 hover:text-transparent hover:bg-clip-text " > Cases  </NavLink>
 <NavLink to='/' className="hover:scale-110 hover:transition-transform hover:duration-400  font-semibold text-lg hover:text-[#CCCCCC] hover:bg-gradient-to-r hover:from-blue-800 hover:via-blue-500 hover:to-blue-300 hover:text-transparent hover:bg-clip-text " > Reports  </NavLink>
 <NavLink to='/' className="hover:scale-110 hover:transition-transform hover:duration-400  font-semibold text-lg hover:text-[#CCCCCC] hover:bg-gradient-to-r hover:from-blue-800 hover:via-blue-500 hover:to-blue-300 hover:text-transparent hover:bg-clip-text " > Teams  </NavLink>
@@ -44,12 +51,47 @@ const navLinks=<>
               </ul>
             </div>
             <div className="navbar-end ">
-            
-             <Link to='/Login'><ButtonZ heading={'Log In'}></ButtonZ> </Link>
+            {
+              user?<div className="dropdown  dropdown-end">
+              <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                <div className="w-10 rounded-full ">
+                <img className="" src={photoURL} alt="" />
+                </div>
+              </div>
+              <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-[#001f3f] rounded-box w-52">
+                <li>
+                  <a className=" hover:bg-blue-900 ">Name :<span className="uppercase"> {displayName}</span>
+                 
+                 
+                  </a>
+                </li>
+                <li><button onClick={()=>  logOut().then(
+                 
+                  toast.success('log Out Successfull', {
+                    position: "top-right",
+                    autoClose: 500,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    }),
+                   <Navigate to='/'></Navigate>
+                )
+                
+                
+                } className="hover:bg-blue-900 ">Logout</button></li>
+              </ul>
             </div>
-            
+           :   <Link to='/Login'><ButtonZ heading={'Log In' }></ButtonZ> </Link>
+            }
+          
+            </div>
+       
             </div>
           </div></Headroom>
+          
           );
         
   
