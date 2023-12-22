@@ -4,10 +4,18 @@ import { extendTheme } from '@chakra-ui/react'
 import './index.css'
 import Root from './Components/Root/Root';
 import Home from './Components/Home/Home.jsx';
+
 import {
   createBrowserRouter,
   RouterProvider,
-} from "react-router-dom";
+} from "react-router-dom"
+import {
+  useQuery,
+  useMutation,
+  useQueryClient,
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
 import { ChakraProvider } from '@chakra-ui/react';
 import Login from './Components/Authentication/Login';
 import AuthProvider from './Components/Authentication/AuthProvider.jsx';
@@ -17,6 +25,7 @@ import Register from './Components/Authentication/Register.jsx';
 import Dashboard from './Components/DashBoard/Dashboard.jsx';
 import CreateTask from './Components/DashBoard/CreateTask.jsx';
 import TaskManageMent from './Components/DashBoard/TaskManageMent.jsx';
+const queryClient = new QueryClient()
 const router = createBrowserRouter([
   {
     path: "/",
@@ -64,7 +73,9 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <AuthProvider>
-
+    <QueryClientProvider client={queryClient}>
+    
+    
     <ToastContainer
 position="top-right"
 autoClose={1000}
@@ -82,6 +93,7 @@ theme="colored"
  
    <RouterProvider router={router} />
    </ChakraProvider>
+   </QueryClientProvider>
    </AuthProvider>
   </React.StrictMode>,
 )

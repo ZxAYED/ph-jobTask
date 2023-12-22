@@ -10,14 +10,48 @@ import { MdOutlineLowPriority } from "react-icons/md";
 import Calendar from 'react-calendar';
 import { PiSubtitlesDuotone } from "react-icons/pi";
 import Btnz from '../Shared/Btnz';
+import { toast } from 'react-toastify';
+import useAxiosPublic from './../Hooks/useAxiosPublic';
+
+
+
 const CreateTask = () => {
+
+    const axiosPublic=useAxiosPublic()
     const {user} =useContext(AuthContext)
     const { register, handleSubmit } = useForm()
     const onSubmit = (data) => {
-        console.log(data) 
-    
-    
-    
+      const { title,priority,deadline,description} =data
+    const email =user.email
+console.log(title.length ,description.length );
+    if(title.length == 0 || description.length == 0 || priority.length == 0 ){
+     return   toast.error('Title / Description Cant be Empty', {
+            position: "top-right",
+            autoClose: 1200,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            });
+    }
+    const body ={
+        title,priority,deadline,description,email
+    }
+    axiosPublic.post('/tasks',body)
+    .then(res=>{if(res.data.insertedId){
+        toast.success(`${title} has been added to Todo list`, {
+            position: "top-right",
+            autoClose: 1200,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            });
+    }})
     }
    
     return (
@@ -37,13 +71,13 @@ const CreateTask = () => {
             <div className= "mx-auto  ">
                 <div className="flex  justify-start lg:justify-between gap-4  flex-wrap items-center ">
                     <a href="#" className="relative block">
-                        <img alt="profil" src={user?.photoURL} className="mx-auto object-cover rounded-full h-16 w-16 "/>
+                        <img alt="profil" src={user?.photoURL}  className="mx-auto object-cover rounded-full h-16 w-16 "/>
                     </a>
                     <h1 className=" uppercase">
                         {user?.displayName}
                     </h1>
-                    <h1 className=" ">
-                      Email :  {user?.email}
+                    <h1  className=" ">
+                      Email :  {user?.email} 
                     </h1>
                 </div>
             </div>
@@ -84,7 +118,7 @@ const CreateTask = () => {
                     <div className="max-w-sm mx-auto  md:w-2/3">
                         <div>
                             <div className=" relative ">
-                                <input type="date"{...register("deadline")} className=" rounded-lg border-transparent flex-1 appearance-none border h-20 border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-[#001f3f]  focus:border-transparent" placeholder="Deadline"/>
+                                <input type="date"{...register("deadline", { required: true } )} className=" rounded-lg border-transparent flex-1 appearance-none border h-20 border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-[#001f3f]  focus:border-transparent" placeholder="Deadline"/>
                                 </div>
                             </div>
                             <div>
@@ -96,7 +130,7 @@ const CreateTask = () => {
                             <hr/>
                             <div className='   px-4  pt-6 flex items-center md:space-y-0'>  
                             <label className="max-w-sm mx-auto flex gap-2 items-center md:w-1/3"> <MdOutlineLowPriority /> Task Priority</label>
-                            <select className='rounded-lg  border-transparent appearance-none border border-gray-300 max-w-sm mx-auto  md:w-2/3  bg-white  shadow-sm text-base ' {...register("gender")}>
+                            <select className='rounded-lg  border-transparent appearance-none border border-gray-300 max-w-sm mx-auto  md:w-2/3  bg-white  shadow-sm text-base ' {...register("priority")}>
                                 <option value="Low">Low</option>
                                 <option value="Moderate">Moderate</option>
                                 <option value="High">High</option>
