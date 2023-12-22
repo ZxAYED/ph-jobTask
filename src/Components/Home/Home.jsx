@@ -10,7 +10,7 @@ const Home = () => {
        axios.get('/Api.json').then(res=>{ setData(res.data) })
     },[])
     
-console.log(data);
+
     return (
         <div>
           <Banner></Banner>
