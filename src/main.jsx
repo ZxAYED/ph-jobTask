@@ -71,7 +71,7 @@ const router = createBrowserRouter([
 
 // const theme = extendTheme({ colors })
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+ 
     <AuthProvider>
     <QueryClientProvider client={queryClient}>
     
@@ -95,5 +95,5 @@ theme="colored"
    </ChakraProvider>
    </QueryClientProvider>
    </AuthProvider>
-  </React.StrictMode>,
+,
 )

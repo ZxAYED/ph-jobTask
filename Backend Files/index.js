@@ -54,7 +54,7 @@ async function run() {
       try{
         const id=req.params.id
        
-        const query={ _id : new ObjectId(id)}
+        const query={ _id :new  ObjectId(id)}
       
         const result =await tasks.deleteOne(query)
         res.send(result)
