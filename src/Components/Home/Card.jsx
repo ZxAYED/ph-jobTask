@@ -1,14 +1,18 @@
+import { useEffect } from "react";
 import ButtonZ from "../Shared/ButtonZ";
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const Card = ({item}) => {
     const {  category,title,description,benefits,image} =item
 
-
+    useEffect(()=>{
+        AOS.init();
+      },[])
     return (
         
-
-<div className="max-w-sm h-[650px] relative text-[#565151] hover:bg-[#F2F2F2] hover:transition-transform hover:scale-105 hover:duration-300 hover:ease-in-out bg-white border border-gray-200  p-6 rounded-lg shadow-2xl ">
+<div data-aos="zoom-out-up">
+<div   className="max-w-sm h-[650px] relative text-[#565151] hover:bg-[#F2F2F2] hover:transition-transform hover:scale-105 hover:duration-300 hover:ease-in-out bg-white border border-gray-200  p-6 rounded-lg shadow-2xl ">
     <a href="#">
         <img  className="rounded-lg h-[250px] object-cover" src={image} alt="" />
     </a>
@@ -27,7 +31,7 @@ const Card = ({item}) => {
         </a>
     </div>
 </div>
-
+</div>
     );
 };
 

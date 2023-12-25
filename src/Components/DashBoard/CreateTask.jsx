@@ -1,29 +1,33 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import SecTionTItle from '../Shared/SecTionTItle';
 import { AuthContext } from '../Authentication/AuthProvider';
 import 'react-calendar/dist/Calendar.css';
 import { FaBookDead } from "react-icons/fa";
 import { TbFileDescription } from "react-icons/tb";
-import { useState } from 'react';
+
 import { MdOutlineLowPriority } from "react-icons/md";
-import Calendar from 'react-calendar';
+
 import { PiSubtitlesDuotone } from "react-icons/pi";
 import Btnz from '../Shared/Btnz';
 import { toast } from 'react-toastify';
 import useAxiosPublic from './../Hooks/useAxiosPublic';
 
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 
 const CreateTask = () => {
-
+    useEffect(()=>{
+        AOS.init();
+      },[])
     const axiosPublic=useAxiosPublic()
     const {user} =useContext(AuthContext)
     const { register, handleSubmit } = useForm()
     const onSubmit = (data) => {
       const { title,priority,deadline,description} =data
     const email =user.email
-console.log(title.length ,description.length );
+
     if(title.length == 0 || description.length == 0 || priority.length == 0 ){
      return   toast.error('Title / Description Cant be Empty', {
             position: "top-right",
@@ -58,7 +62,10 @@ console.log(title.length ,description.length );
         <div className='mx-5 xl:mx-20 pb-20 '>
             <SecTionTItle name='Craft Your Next Achievement' des='Dive into productivity and start your journey to success by creating tasks with ease. Our "Craft Your Next Achievement" section allows you to define, organize, and prioritize your goals effortlessly. Seamlessly tailor tasks to your workflow, ensuring nothing gets overlooked. Take charge of your progress and turn aspirations into accomplishments with the simple yet powerful task creation features at your fingertips. Your path to success begins here.'></SecTionTItle>
 
-            <div className="mx-auto ">
+            <div  data-aos="fade-left"
+     data-aos-anchor="#example-anchor"
+     data-aos-offset="500"
+     data-aos-duration="500" className="mx-auto ">
                 <div className="flex  flex-col-reverse items-center xl:flex-row-reverse">
                     <div className="flex flex-col justify-center flex-1">
                         <form onSubmit={handleSubmit(onSubmit)}>
@@ -102,7 +109,7 @@ console.log(title.length ,description.length );
                     <div className="max-w-sm mx-auto md:w-2/3">
                         <div>
                             <div className=" relative ">
-                                <input type="text"{...register("description")} className=" rounded-lg border-transparent flex-1 appearance-none border h-20 border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-[#001f3f]  focus:border-transparent" placeholder="Description"/>
+                                <textarea type="description"{...register("description")} rows="4" cols="50" className=" rounded-lg border-transparent flex-1 appearance-none border h-20 border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-[#001f3f]  focus:border-transparent" placeholder="Description"/>
                                 </div>
                             </div>
                             <div>

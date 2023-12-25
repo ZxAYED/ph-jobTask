@@ -9,7 +9,7 @@ const Home = () => {
     useEffect(()=>{
        axios.get('/Api.json').then(res=>{ setData(res.data) })
     },[])
-    
+  
 
     return (
         <div>

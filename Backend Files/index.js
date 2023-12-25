@@ -49,12 +49,20 @@ async function run() {
       res.send(result)
 
     })
+    app.get('/tasks/:id', async (req, res) => {
+      // const id =
+
+
+     
+      const result = await tasks.find().toArray();
+      res.send(result)
+
+    })
 
     app.delete('/tasks/:id',async(req,res)=>{
       try{
         const id=req.params.id
-       
-        const query={ _id :new  ObjectId(id)}
+     const query={ _id :new  ObjectId(id)}
       
         const result =await tasks.deleteOne(query)
         res.send(result)
